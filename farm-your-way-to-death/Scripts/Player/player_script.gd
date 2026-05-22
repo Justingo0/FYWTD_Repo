@@ -1,16 +1,12 @@
 extends CharacterBody2D
 
-@onready var held_item_slot := $ItemPivot/ItemSlot
-@onready var held_pivot := $ItemPivot
-
 @export var speed:int = 70
 @export var acceleration:int = 60
 
-@export var max_health:int = 100
 @export var health:int = 100
-@export var max_hunger:int = 100
 @export var hunger:int = 100
 
+<<<<<<< HEAD:farm-your-way-to-death/Scripts/Player/player_script.gd
 @export_subgroup("Inventory Variables")
 @export var inventory:Array
 @export var hovered_item = null
@@ -27,13 +23,16 @@ func _input(event: InputEvent) -> void:
 				hovered_item.visible = false
 				inventory.append(hovered_item)
 
+=======
+>>>>>>> parent of ef2288f (Inventory Start):farm-your-way-to-death/Scenes/Objects/player_script.gd
 func _physics_process(delta: float) -> void:
 	var input_axis:Vector2 = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
+	
 	var target_accel = acceleration*100
 	var target_speed = speed*10
-	var target_velocity:Vector2 = input_axis * target_speed
-	velocity = Vector2(move_toward(velocity.x, target_velocity.x, target_accel * delta), move_toward(velocity.y, target_velocity.y, target_accel * delta))
 	
-	health = clamp(health, 0, max_health)
+	var target_velocity:Vector2 = input_axis * target_speed
+	   
+	velocity = Vector2(move_toward(velocity.x, target_velocity.x, target_accel * delta), move_toward(velocity.y, target_velocity.y, target_accel * delta))
 	
 	move_and_slide()
