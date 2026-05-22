@@ -24,7 +24,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("Interact"):
 			if hovered_item:
 				hovered_item.get_child(0).disabled = true
-				remove_child(hovered_item)
+				hovered_item.visible = false
 				inventory.append(hovered_item)
 
 func _physics_process(delta: float) -> void:
