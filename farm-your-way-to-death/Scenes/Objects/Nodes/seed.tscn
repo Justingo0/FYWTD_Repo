@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://4jm4s5d8mdks"]
+
+[node name="Seed" type="ColorRect"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0

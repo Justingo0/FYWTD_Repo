@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://xr404syxp4or"]
+
+[ext_resource type="Script" path="res://Scripts/sycthe.gd" id="1_udq5t"]
+[ext_resource type="Texture2D" uid="uid://cv48yarsibd5k" path="res://Sprites/Scythe.png" id="2_vbe3v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab6nr"]
+size = Vector2(218, 192)
+
+[node name="Sycthe" type="Area2D"]
+z_index = 5
+position = Vector2(2, 0)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_udq5t")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(54.2857, -34)
+scale = Vector2(8, 8)
+texture = ExtResource("2_vbe3v")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(112.286, -34)
+shape = SubResource("RectangleShape2D_ab6nr")
+disabled = true

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://qnrkqc5ncf17"]
+[gd_scene load_steps=3 format=3 uid="uid://qnrkqc5ncf17"]
 
-[ext_resource type="PackedScene" uid="uid://c3lromuble58s" path="res://Scenes/Objects/player_character.tscn" id="1_2cok2"]
-[ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://user_interface.tscn" id="2_h2yf4"]
-[ext_resource type="PackedScene" uid="uid://bi7eahu2v8cum" path="res://godot.tscn" id="3_pydpw"]
+[ext_resource type="PackedScene" uid="uid://c3lromuble58s" path="res://Scenes/Objects/Nodes/player_character.tscn" id="1_2cok2"]
+[ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://Scenes/user_interface.tscn" id="2_h2yf4"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -15,6 +14,3 @@ z_index = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainUI" parent="CanvasLayer" instance=ExtResource("2_h2yf4")]
-
-[node name="Godot" parent="." instance=ExtResource("3_pydpw")]
-position = Vector2(489, 252)

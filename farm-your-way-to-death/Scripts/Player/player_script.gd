@@ -1,7 +1,16 @@
 extends CharacterBody2D
 
-@onready var held_item_slot := $ItemPivot/ItemSlot
-@onready var held_pivot := $ItemPivot
+@onready var item_slot := $ItemSlot
+@onready var weapon_slot := $WeaponSlot
+
+@onready var lHand = $LeftHand
+@onready var rHand = $RightHand
+@onready var anim = $Animation
+@onready var anim_player = $AnimationPlayer
+
+@onready var hand1 = preload("res://Sprites/Player/Hand1.png")
+@onready var hand2 = preload("res://Sprites/Player/Hand2.png")
+@onready var hand3 = preload("res://Sprites/Player/Hand3.png")
 
 @export var speed:int = 70
 @export var acceleration:int = 60
@@ -11,9 +20,8 @@ extends CharacterBody2D
 @export var max_hunger:int = 100
 @export var hunger:int = 100
 
-@export_subgroup("Inventory Variables")
-@export var inventory:Array
-@export var hovered_item = null
+var tween_life:float = 0.5
+var last_dir:String = "Left"
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -21,11 +29,6 @@ func _input(event: InputEvent) -> void:
 			health -= 1
 		if event.is_action("Test2"):
 			health += 1
-		if event.is_action_pressed("Interact"):
-			if hovered_item:
-				hovered_item.get_child(0).disabled = true
-				hovered_item.visible = false
-				inventory.append(hovered_item)
 
 func _physics_process(delta: float) -> void:
 	var input_axis:Vector2 = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
@@ -33,6 +36,28 @@ func _physics_process(delta: float) -> void:
 	var target_speed = speed*10
 	var target_velocity:Vector2 = input_axis * target_speed
 	velocity = Vector2(move_toward(velocity.x, target_velocity.x, target_accel * delta), move_toward(velocity.y, target_velocity.y, target_accel * delta))
+	
+	if input_axis.x > 0:
+		anim.play("run")
+		anim_player.play("runRight", tween_life)
+		anim.flip_h = true
+		
+		last_dir = "Right"
+	elif input_axis.x < 0:
+		anim.play("run")
+		anim_player.play("runLeft", tween_life)
+		anim.flip_h = false
+		
+		last_dir = "Left"
+	elif input_axis.y > 0 or input_axis.y < 0:
+		anim.play("run")
+		if last_dir == "Left":
+			anim_player.play("runLeft", tween_life)
+		else:
+			anim_player.play("runRight", tween_life)
+	else:
+		anim_player.play("idle", tween_life)
+		anim.play("idle")
 	
 	health = clamp(health, 0, max_health)
 	

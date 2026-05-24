@@ -1,13 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://bi7eahu2v8cum"]
 
-[ext_resource type="Script" path="res://Scripts/item_funcs.gd" id="1_sximh"]
+[sub_resource type="GDScript" id="GDScript_1hq3u"]
+script/source = "extends Area2D
+
+@export var item:PackedScene = null
+@export var isWeapon:bool = false
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.get_class() == \"CharacterBody2D\":
+		body.hovered_item = self
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.get_class() == \"CharacterBody2D\":
+		if body.hovered_item == self:
+			body.hovered_item = null
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3c12"]
 radius = 400.0
 
-[node name="Godot" type="Area2D"]
+[node name="Item" type="Area2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_sximh")
+script = SubResource("GDScript_1hq3u")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i3c12")
