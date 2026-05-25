@@ -3,25 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/sycthe.gd" id="1_wm3a8"]
 [ext_resource type="Texture2D" uid="uid://cv48yarsibd5k" path="res://Sprites/Scythe.png" id="2_vbe3v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab6nr"]
-size = Vector2(327.536, 248)
-
-[sub_resource type="Animation" id="Animation_308ij"]
-resource_name = "attack"
-length = 0.55
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.533333),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [0.0, 6.28319, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_61rji"]
 length = 0.001
 tracks/0/type = "value"
@@ -36,6 +17,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_308ij"]
+resource_name = "attack"
+length = 0.6
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.333333),
+"transitions": PackedFloat32Array(0.5, 0, 1),
+"update": 0,
+"values": [0.0, 6.28319, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nora8"]
 _data = {
@@ -43,17 +53,14 @@ _data = {
 "attack": SubResource("Animation_308ij")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fewyu"]
+size = Vector2(370.286, 202)
+
 [node name="Sycthe" type="Area2D"]
 z_index = 5
 position = Vector2(2, 0)
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_wm3a8")
-
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(57.518, -34)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_ab6nr")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -68,3 +75,11 @@ texture_filter = 1
 position = Vector2(54.286, -14)
 scale = Vector2(8, 8)
 texture = ExtResource("2_vbe3v")
+
+[node name="Bone" type="Node2D" parent="Pivot/Sprite"]
+position = Vector2(-5.84825, -4.34375)
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="."]
+position = Vector2(71.4286, -37.1429)
+scale = Vector2(1.25, 1.25)
+shape = SubResource("RectangleShape2D_fewyu")

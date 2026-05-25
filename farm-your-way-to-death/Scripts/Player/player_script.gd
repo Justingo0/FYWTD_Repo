@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var anim = $Animation
 @onready var anim_player = $AnimationPlayer
 
+@onready var hitbox:Area2D = $Hitboxa
+@onready var hitboxCol = $Hitbox/HitboxCollision
+
 @onready var hand1 = preload("res://Sprites/Player/Hand1.png")
 @onready var hand2 = preload("res://Sprites/Player/Hand2.png")
 @onready var hand3 = preload("res://Sprites/Player/Hand3.png")
