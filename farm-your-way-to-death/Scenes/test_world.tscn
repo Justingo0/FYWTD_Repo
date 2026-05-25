@@ -11,6 +11,6 @@ z_index = 2
 
 [node name="MainCamera" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
 
-[node name="MainUI" parent="CanvasLayer" instance=ExtResource("2_h2yf4")]
+[node name="MainUI" parent="Canvas" instance=ExtResource("2_h2yf4")]

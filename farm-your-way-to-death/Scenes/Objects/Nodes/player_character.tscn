@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3lromuble58s"]
+[gd_scene load_steps=16 format=3 uid="uid://c3lromuble58s"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_script.gd" id="1_r1f42"]
 [ext_resource type="Texture2D" uid="uid://kw442bvbwia4" path="res://Sprites/Player/Movement/Move5.png" id="2_er47k"]
+[ext_resource type="PackedScene" uid="uid://xr404syxp4or" path="res://Scenes/Objects/Nodes/sycthe.tscn" id="2_t48wd"]
 [ext_resource type="Texture2D" uid="uid://dwin4oc0nt6rq" path="res://Sprites/Player/Hand1.png" id="3_6hkya"]
 [ext_resource type="Texture2D" uid="uid://cxao5swhkaysb" path="res://Sprites/Player/Movement/Move3.png" id="3_cqgui"]
 [ext_resource type="Texture2D" uid="uid://evi6xwckcirm" path="res://Sprites/Player/Movement/Move1.png" id="3_xq1ms"]
+[ext_resource type="Texture2D" uid="uid://bddvtlc2yl5dx" path="res://Sprites/Player/Hand3.png" id="5_vrtsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu27p"]
 size = Vector2(88, 94)
@@ -30,6 +32,33 @@ animations = [{
 "name": &"run",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_n3x6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_oj44o"]
 resource_name = "idle"
@@ -61,36 +90,8 @@ tracks/1/keys = {
 "values": [0.0349066, -0.0349066, 0.0349066]
 }
 
-[sub_resource type="Animation" id="Animation_n3x6i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_rfep4"]
 resource_name = "runLeft"
-length = 1.0
 loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
@@ -120,7 +121,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_l4lev"]
 resource_name = "runRight"
-length = 1.0
 loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
@@ -148,12 +148,18 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_jnnfn"]
+resource_name = "runVert"
+loop_mode = 1
+step = 0.125
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1xek8"]
 _data = {
 "RESET": SubResource("Animation_n3x6i"),
 "idle": SubResource("Animation_oj44o"),
 "runLeft": SubResource("Animation_rfep4"),
-"runRight": SubResource("Animation_l4lev")
+"runRight": SubResource("Animation_l4lev"),
+"runVert": SubResource("Animation_jnnfn")
 }
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
@@ -167,8 +173,14 @@ shape = SubResource("RectangleShape2D_fu27p")
 [node name="ItemSlot" type="Node2D" parent="."]
 position = Vector2(0, -28)
 
-[node name="WeaponSlot" type="Node2D" parent="."]
+[node name="RightSlot" type="Node2D" parent="."]
 position = Vector2(60, -40)
+
+[node name="Sycthe" parent="RightSlot" instance=ExtResource("2_t48wd")]
+scale = Vector2(0.7, 0.7)
+
+[node name="LeftSlot" type="Node2D" parent="."]
+position = Vector2(-60, -40)
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -189,7 +201,7 @@ z_index = 4
 texture_filter = 1
 position = Vector2(36, -32)
 scale = Vector2(8, 8)
-texture = ExtResource("3_6hkya")
+texture = ExtResource("5_vrtsh")
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

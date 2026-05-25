@@ -23,12 +23,17 @@ extends CharacterBody2D
 var tween_life:float = 0.5
 var last_dir:String = "Left"
 
+@onready var held_item = $RightSlot/Sycthe
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action("Test"):
 			health -= 1
 		if event.is_action("Test2"):
 			health += 1
+		if event.is_action_pressed("Attack"):
+			if held_item:
+				held_item.stats.use()
 
 func _physics_process(delta: float) -> void:
 	var input_axis:Vector2 = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
@@ -49,12 +54,18 @@ func _physics_process(delta: float) -> void:
 		anim.flip_h = false
 		
 		last_dir = "Left"
-	elif input_axis.y > 0 or input_axis.y < 0:
+	elif input_axis.y > 0:
 		anim.play("run")
 		if last_dir == "Left":
 			anim_player.play("runLeft", tween_life)
 		else:
 			anim_player.play("runRight", tween_life)
+	elif input_axis.y < 0:
+		anim.play("run")
+		if last_dir == "Left":
+			anim_player.play("runRight", tween_life)
+		else:
+			anim_player.play("runLeft", tween_life)
 	else:
 		anim_player.play("idle", tween_life)
 		anim.play("idle")
