@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dutm136v7piwx"
-path="res://.godot/imported/ScytheSpin1.png-795b12729974300ade7b0081c5665eb7.ctex"
+uid="uid://cd558lpuqv06n"
+path="res://.godot/imported/ScytheSpinny.png-0b636f2f8fbb45285ddeac585bda49c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ScytheSpin1.png"
-dest_files=["res://.godot/imported/ScytheSpin1.png-795b12729974300ade7b0081c5665eb7.ctex"]
+source_file="res://Sprites/ScytheSpinny.png"
+dest_files=["res://.godot/imported/ScytheSpinny.png-0b636f2f8fbb45285ddeac585bda49c8.ctex"]
 
 [params]
 
