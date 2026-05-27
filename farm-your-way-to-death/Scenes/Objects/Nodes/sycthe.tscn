@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://xr404syxp4or"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/sycthe.gd" id="1_wm3a8"]
+[ext_resource type="Texture2D" uid="uid://cd558lpuqv06n" path="res://Sprites/ScytheSpinny.png" id="2_74tx6"]
 [ext_resource type="Texture2D" uid="uid://cv48yarsibd5k" path="res://Sprites/Scythe.png" id="2_vbe3v"]
 
 [sub_resource type="Animation" id="Animation_61rji"]
@@ -8,43 +9,55 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_74tx6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Pivot/Sprite:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
 
 [sub_resource type="Animation" id="Animation_308ij"]
 resource_name = "attack"
-length = 0.700005
+length = 0.4
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.65),
-"transitions": PackedFloat32Array(1, 1, 0, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_74tx6"), ExtResource("2_vbe3v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
 "update": 0,
-"values": [0.0, 6.28319, 12.5664, 0.0]
+"values": [0.0, 1.5708, 3.14159, 4.71239, 0.0, 1.5708, 3.14159, 4.71239, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nora8"]
@@ -52,9 +65,6 @@ _data = {
 "RESET": SubResource("Animation_61rji"),
 "attack": SubResource("Animation_308ij")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fewyu"]
-size = Vector2(370.286, 202)
 
 [node name="Sycthe" type="Area2D"]
 z_index = 5
@@ -67,19 +77,11 @@ libraries = {
 "": SubResource("AnimationLibrary_nora8")
 }
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="."]
-position = Vector2(71.4286, -37.1429)
-scale = Vector2(1.25, 1.25)
-shape = SubResource("RectangleShape2D_fewyu")
-
-[node name="Pivot" type="Node2D" parent="."]
-position = Vector2(0, -20)
-
-[node name="Sprite" type="Sprite2D" parent="Pivot"]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(54.286, -14)
+position = Vector2(60, -30)
 scale = Vector2(8, 8)
 texture = ExtResource("2_vbe3v")
 
-[node name="Bone" type="Node2D" parent="Pivot/Sprite"]
+[node name="Bone" type="Node2D" parent="Sprite"]
 position = Vector2(-5.84825, -4.34375)

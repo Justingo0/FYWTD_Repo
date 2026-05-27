@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
 			health += 1
 		if event.is_action_pressed("Attack"):
 			if held_item:
-				held_item.stats.use()
+				held_item.use()
 
 func _physics_process(delta: float) -> void:
 	var input_axis:Vector2 = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
