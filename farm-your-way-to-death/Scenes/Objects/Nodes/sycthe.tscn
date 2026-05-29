@@ -94,6 +94,7 @@ _data = {
 z_index = 5
 position = Vector2(2, 0)
 script = ExtResource("1_wm3a8")
+cooldown_time = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -114,3 +115,6 @@ scale = Vector2(8, 8)
 texture_filter = 1
 position = Vector2(1.5, -7.5)
 texture = ExtResource("2_5jiu6")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
