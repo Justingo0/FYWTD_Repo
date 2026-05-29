@@ -1,30 +1,42 @@
 [gd_scene load_steps=7 format=3 uid="uid://xr404syxp4or"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/sycthe.gd" id="1_wm3a8"]
-[ext_resource type="Texture2D" uid="uid://cd558lpuqv06n" path="res://Sprites/ScytheSpinny.png" id="2_74tx6"]
-[ext_resource type="Texture2D" uid="uid://cv48yarsibd5k" path="res://Sprites/Scythe.png" id="2_vbe3v"]
+[ext_resource type="Texture2D" uid="uid://vtcxr6hlvux7" path="res://Sprites/Objects/Items/Weapons/ScytheFlash.png" id="2_5jiu6"]
+[ext_resource type="Texture2D" uid="uid://bxqg7w0wo4naj" path="res://Sprites/Objects/Items/Weapons/Scythe.png" id="2_por36"]
 
 [sub_resource type="Animation" id="Animation_61rji"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("Main:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.001),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_74tx6")]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/path = NodePath("Pivot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -38,26 +50,38 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("Main:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_74tx6"), ExtResource("2_vbe3v")]
+"values": [false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/path = NodePath("Pivot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
-"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(0, 0, 0, 0),
 "update": 0,
-"values": [0.0, 1.5708, 3.14159, 4.71239, 0.0, 1.5708, 3.14159, 4.71239, 0.0]
+"values": [1.5708, 3.14159, 4.71239, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nora8"]
@@ -69,7 +93,6 @@ _data = {
 [node name="Sycthe" type="Area2D"]
 z_index = 5
 position = Vector2(2, 0)
-scale = Vector2(0.7, 0.7)
 script = ExtResource("1_wm3a8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -77,11 +100,17 @@ libraries = {
 "": SubResource("AnimationLibrary_nora8")
 }
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Main" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(60, -30)
+position = Vector2(56, -24)
 scale = Vector2(8, 8)
-texture = ExtResource("2_vbe3v")
+texture = ExtResource("2_por36")
 
-[node name="Bone" type="Node2D" parent="Sprite"]
-position = Vector2(-5.84825, -4.34375)
+[node name="Pivot" type="Node2D" parent="."]
+visible = false
+scale = Vector2(8, 8)
+
+[node name="Anim" type="Sprite2D" parent="Pivot"]
+texture_filter = 1
+position = Vector2(1.5, -7.5)
+texture = ExtResource("2_5jiu6")

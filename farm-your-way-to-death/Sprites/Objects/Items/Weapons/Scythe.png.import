@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg12xn8qwh7lr"
-path="res://.godot/imported/Move4.png-e19578417ff5c34bb437365ccd91d7ab.ctex"
+uid="uid://bxqg7w0wo4naj"
+path="res://.godot/imported/Scythe.png-1e290e5fc34e05838c489a103d92d07b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Movement/Move4.png"
-dest_files=["res://.godot/imported/Move4.png-e19578417ff5c34bb437365ccd91d7ab.ctex"]
+source_file="res://Sprites/Objects/Items/Weapons/Scythe.png"
+dest_files=["res://.godot/imported/Scythe.png-1e290e5fc34e05838c489a103d92d07b.ctex"]
 
 [params]
 

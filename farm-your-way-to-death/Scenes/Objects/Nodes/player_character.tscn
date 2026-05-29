@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://c3lromuble58s"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_script.gd" id="1_r1f42"]
-[ext_resource type="Texture2D" uid="uid://kw442bvbwia4" path="res://Sprites/Player/Movement/Move5.png" id="2_er47k"]
 [ext_resource type="PackedScene" uid="uid://xr404syxp4or" path="res://Scenes/Objects/Nodes/sycthe.tscn" id="2_t48wd"]
 [ext_resource type="Texture2D" uid="uid://dwin4oc0nt6rq" path="res://Sprites/Player/Hand1.png" id="3_6hkya"]
-[ext_resource type="Texture2D" uid="uid://cxao5swhkaysb" path="res://Sprites/Player/Movement/Move3.png" id="3_cqgui"]
-[ext_resource type="Texture2D" uid="uid://evi6xwckcirm" path="res://Sprites/Player/Movement/Move1.png" id="3_xq1ms"]
+[ext_resource type="Texture2D" uid="uid://bu12u7eycnqhi" path="res://Sprites/Player/Movement/Move3.png" id="3_cqgui"]
+[ext_resource type="Texture2D" uid="uid://cmseq4bpnd0pg" path="res://Sprites/Player/Movement/Move1.png" id="3_xq1ms"]
+[ext_resource type="Texture2D" uid="uid://cbutmtbyv1pfi" path="res://Sprites/Player/Movement/Move2.png" id="5_087vq"]
 [ext_resource type="Texture2D" uid="uid://bddvtlc2yl5dx" path="res://Sprites/Player/Hand3.png" id="5_vrtsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu27p"]
@@ -15,7 +15,7 @@ size = Vector2(88, 94)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_er47k")
+"texture": ExtResource("3_cqgui")
 }],
 "loop": true,
 "name": &"idle",
@@ -26,7 +26,7 @@ animations = [{
 "texture": ExtResource("3_xq1ms")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_cqgui")
+"texture": ExtResource("5_087vq")
 }],
 "loop": true,
 "name": &"run",
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.48333, 2),
 "transitions": PackedFloat32Array(-2, 1, -2, 1, -2),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
-"values": [0.0349066, -0.0349066, 0.0349066]
+"values": [0.0174533, -0.0174533, 0.0174533]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -189,6 +189,7 @@ position = Vector2(0, -28)
 position = Vector2(60, -40)
 
 [node name="Sycthe" parent="RightSlot" instance=ExtResource("2_t48wd")]
+position = Vector2(0, 0)
 
 [node name="LeftSlot" type="Node2D" parent="."]
 position = Vector2(-60, -40)
