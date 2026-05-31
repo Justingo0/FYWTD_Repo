@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://qnrkqc5ncf17"]
+[gd_scene load_steps=4 format=3 uid="uid://qnrkqc5ncf17"]
 
 [ext_resource type="PackedScene" uid="uid://c3lromuble58s" path="res://Scenes/Objects/Nodes/player_character.tscn" id="1_2cok2"]
 [ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://Scenes/user_interface.tscn" id="2_h2yf4"]
+[ext_resource type="PackedScene" uid="uid://b25l3g8wwlakp" path="res://Scenes/Objects/Nodes/Enemies/ghost.tscn" id="3_kkedg"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -14,3 +15,6 @@ z_index = 2
 [node name="Canvas" type="CanvasLayer" parent="."]
 
 [node name="MainUI" parent="Canvas" instance=ExtResource("2_h2yf4")]
+
+[node name="Ghost" parent="." instance=ExtResource("3_kkedg")]
+position = Vector2(479, -226)

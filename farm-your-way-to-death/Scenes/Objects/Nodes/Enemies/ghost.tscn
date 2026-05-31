@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://b25l3g8wwlakp"]
+
+[ext_resource type="Texture2D" uid="uid://7d5hvuf7h6ge" path="res://Sprites/Enemies/Ghosts/Death.png" id="1_3dicv"]
+[ext_resource type="Script" path="res://Scripts/Enemies/ghost.gd" id="1_btdaj"]
+[ext_resource type="Texture2D" uid="uid://cogj5u2qaud0i" path="res://Sprites/Enemies/Ghosts/Move1.png" id="1_ngdg8"]
+[ext_resource type="Texture2D" uid="uid://d2g4hw2nybeqt" path="res://Sprites/Enemies/Ghosts/Attack1.png" id="2_dxfmu"]
+[ext_resource type="Texture2D" uid="uid://xjjiatu1ithi" path="res://Sprites/Enemies/Ghosts/Move2.png" id="2_lryeb"]
+[ext_resource type="Texture2D" uid="uid://dx3nqjpv23055" path="res://Sprites/Enemies/Ghosts/Attack2.png" id="3_3hghr"]
+[ext_resource type="Texture2D" uid="uid://bw8layky2o0gu" path="res://Sprites/Enemies/Ghosts/Move3.png" id="3_iqb68"]
+[ext_resource type="Texture2D" uid="uid://dab7e6c8c77tl" path="res://Sprites/Enemies/Ghosts/Attack3.png" id="4_qrhu2"]
+[ext_resource type="Texture2D" uid="uid://dw1k22y5050aa" path="res://Sprites/Enemies/Ghosts/Attack4.png" id="5_5da6s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uasnd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dxfmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3hghr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qrhu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5da6s")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3dicv")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ngdg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lryeb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iqb68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lryeb")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_pqc53"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0523599, 0.0523599]
+}
+
+[sub_resource type="Animation" id="Animation_2dfvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vw1bv"]
+_data = {
+"RESET": SubResource("Animation_2dfvg"),
+"attack": SubResource("Animation_pqc53")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jxgj2"]
+radius = 85.0059
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_btdaj")
+attack_cooldown = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_uasnd")
+animation = &"move"
+autoplay = "move"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vw1bv")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_jxgj2")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

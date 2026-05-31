@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://c3lromuble58s"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_script.gd" id="1_r1f42"]
-[ext_resource type="PackedScene" uid="uid://xr404syxp4or" path="res://Scenes/Objects/Nodes/sycthe.tscn" id="2_t48wd"]
+[ext_resource type="PackedScene" uid="uid://xr404syxp4or" path="res://Scenes/Objects/Nodes/Items/sycthe.tscn" id="2_t48wd"]
 [ext_resource type="Texture2D" uid="uid://dwin4oc0nt6rq" path="res://Sprites/Player/Hand1.png" id="3_6hkya"]
-[ext_resource type="Texture2D" uid="uid://bu12u7eycnqhi" path="res://Sprites/Player/Movement/Move3.png" id="3_cqgui"]
-[ext_resource type="Texture2D" uid="uid://cmseq4bpnd0pg" path="res://Sprites/Player/Movement/Move1.png" id="3_xq1ms"]
-[ext_resource type="Texture2D" uid="uid://cbutmtbyv1pfi" path="res://Sprites/Player/Movement/Move2.png" id="5_087vq"]
+[ext_resource type="Texture2D" uid="uid://bx8ah41hcshdt" path="res://Sprites/Player/Movement/Move3.png" id="3_cqgui"]
+[ext_resource type="Texture2D" uid="uid://b4d2jo60tl0gw" path="res://Sprites/Player/Movement/Move1.png" id="3_xq1ms"]
+[ext_resource type="Texture2D" uid="uid://drg1b8j4djwdj" path="res://Sprites/Player/Movement/Move2.png" id="5_087vq"]
 [ext_resource type="Texture2D" uid="uid://bddvtlc2yl5dx" path="res://Sprites/Player/Hand3.png" id="5_vrtsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu27p"]
@@ -189,17 +189,17 @@ position = Vector2(0, -28)
 position = Vector2(60, -40)
 
 [node name="Sycthe" parent="RightSlot" instance=ExtResource("2_t48wd")]
-position = Vector2(0, 0)
 
 [node name="LeftSlot" type="Node2D" parent="."]
 position = Vector2(-60, -40)
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -64)
+position = Vector2(0, -52)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_1fak8")
 animation = &"idle"
+frame_progress = 0.085189
 
 [node name="LeftHand" type="Sprite2D" parent="."]
 z_index = 4

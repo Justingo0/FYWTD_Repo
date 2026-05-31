@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xr404syxp4or"]
+[gd_scene load_steps=8 format=3 uid="uid://xr404syxp4or"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/sycthe.gd" id="1_wm3a8"]
 [ext_resource type="Texture2D" uid="uid://vtcxr6hlvux7" path="res://Sprites/Objects/Items/Weapons/ScytheFlash.png" id="2_5jiu6"]
@@ -83,6 +83,23 @@ tracks/2/keys = {
 "update": 0,
 "values": [1.5708, 3.14159, 4.71239, 0.0]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"trigger_hitbox"
+}, {
+"args": [],
+"method": &"anim_half_way"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nora8"]
 _data = {
@@ -90,11 +107,13 @@ _data = {
 "attack": SubResource("Animation_308ij")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2v47"]
+radius = 283.0
+
 [node name="Sycthe" type="Area2D"]
 z_index = 5
-position = Vector2(2, 0)
 script = ExtResource("1_wm3a8")
-cooldown_time = 2.0
+cooldown_time = 0.9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -109,12 +128,18 @@ texture = ExtResource("2_por36")
 
 [node name="Pivot" type="Node2D" parent="."]
 visible = false
+position = Vector2(-58, -20)
 scale = Vector2(8, 8)
 
 [node name="Anim" type="Sprite2D" parent="Pivot"]
 texture_filter = 1
-position = Vector2(1.5, -7.5)
+position = Vector2(8.75, -5)
 texture = ExtResource("2_5jiu6")
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-58, -20)
+shape = SubResource("CircleShape2D_c2v47")
+disabled = true

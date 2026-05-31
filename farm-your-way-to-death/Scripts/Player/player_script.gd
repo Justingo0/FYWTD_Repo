@@ -28,15 +28,15 @@ var last_dir:String = "Left"
 
 @onready var held_item = $RightSlot/Sycthe
 
+func _ready() -> void:
+	add_to_group("Player")
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action("Test"):
 			health -= 1
 		if event.is_action("Test2"):
 			health += 1
-		if event.is_action_pressed("Attack"):
-			if held_item:
-				held_item.use()
 
 func _physics_process(delta: float) -> void:
 	var input_axis:Vector2 = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
@@ -44,6 +44,10 @@ func _physics_process(delta: float) -> void:
 	var target_speed = speed*10
 	var target_velocity:Vector2 = input_axis * target_speed
 	velocity = Vector2(move_toward(velocity.x, target_velocity.x, target_accel * delta), move_toward(velocity.y, target_velocity.y, target_accel * delta))
+	
+	if Input.is_action_pressed("Attack"):
+		if held_item:
+			held_item.use(self)
 	
 	if input_axis.x > 0:
 		anim.play("run")
@@ -76,3 +80,7 @@ func _physics_process(delta: float) -> void:
 	health = clamp(health, 0, max_health)
 	
 	move_and_slide()
+
+
+func take_damage(damage:int):
+	health -= damage
