@@ -48,11 +48,14 @@ func use(player:CharacterBody2D) -> void:
 	
 	await animator.animation_finished
 	
-	hitbox.disabled = true
 	setHands(player, ogHand1, ogHand2)
 
 func trigger_hitbox() -> void:
-	hitbox.disabled = false
+	var attackingBodies = get_overlapping_bodies()
+	
+	for body in attackingBodies:
+		if body.is_in_group("Enemy"):
+			body.take_damage(damage)
 
 func anim_half_way() -> void:
 	setHands(local_player, heldHandSprite, normHandSprite)

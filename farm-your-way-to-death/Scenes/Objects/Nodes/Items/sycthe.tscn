@@ -108,11 +108,14 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2v47"]
-radius = 283.0
+radius = 213.009
 
 [node name="Sycthe" type="Area2D"]
 z_index = 5
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_wm3a8")
+damage = 12
 cooldown_time = 0.9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -142,4 +145,3 @@ one_shot = true
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-58, -20)
 shape = SubResource("CircleShape2D_c2v47")
-disabled = true

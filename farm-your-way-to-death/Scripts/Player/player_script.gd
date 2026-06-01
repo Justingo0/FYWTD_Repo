@@ -1,15 +1,11 @@
 extends CharacterBody2D
 
 @onready var item_slot := $ItemSlot
-@onready var weapon_slot := $WeaponSlot
 
 @onready var lHand = $LeftHand
 @onready var rHand = $RightHand
 @onready var anim = $Animation
 @onready var anim_player = $AnimationPlayer
-
-@onready var hitbox:Area2D = $Hitboxa
-@onready var hitboxCol = $Hitbox/HitboxCollision
 
 @onready var hand1 = preload("res://Sprites/Player/Hand1.png")
 @onready var hand2 = preload("res://Sprites/Player/Hand2.png")
@@ -81,6 +77,5 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
-func take_damage(damage:int):
-	health -= damage
+func take_damage(damageDealt:int):
+	health -= damageDealt
