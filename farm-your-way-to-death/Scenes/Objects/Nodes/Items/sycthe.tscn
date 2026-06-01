@@ -45,7 +45,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_308ij"]
 resource_name = "attack"
-length = 0.4
+length = 0.45
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,7 +54,7 @@ tracks/0/path = NodePath("Main:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.35),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -66,7 +66,7 @@ tracks/1/path = NodePath("Pivot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.35),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -78,10 +78,10 @@ tracks/2/path = NodePath("Pivot:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0),
 "update": 0,
-"values": [1.5708, 3.14159, 4.71239, 0.0]
+"values": [0.0, 1.5708, 3.14159, 4.71239, 0.0]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -108,7 +108,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2v47"]
-radius = 213.009
+radius = 216.002
 
 [node name="Sycthe" type="Area2D"]
 z_index = 5

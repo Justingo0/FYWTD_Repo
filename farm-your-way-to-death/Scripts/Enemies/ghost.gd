@@ -63,7 +63,7 @@ func take_damage(damageDealt):
 	health -= damageDealt
 	if health <= 0:
 		spriteAnim.play("hurt")
-		animPlayer.play("attack")
+		animPlayer.play("death")
 		is_dead = true
 		
 		await animPlayer.animation_finished
