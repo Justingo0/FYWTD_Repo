@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var item_slot := $ItemSlot
+@onready var left_slot := $LeftSlot
+@onready var right_slot := $RightSlot
 
 @onready var lHand = $LeftHand
 @onready var rHand = $RightHand
@@ -22,7 +24,8 @@ extends CharacterBody2D
 var tween_life:float = 0.5
 var last_dir:String = "Left"
 
-@onready var held_item = $RightSlot/Sycthe
+var held_item = null
+@export var closest_item = null
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -33,6 +36,15 @@ func _input(event: InputEvent) -> void:
 			health -= 1
 		if event.is_action("Test2"):
 			health += 1
+		if event.is_action_pressed("Interact"):
+			var newItem = closest_item.item.instantiate()
+			if not newItem.is_in_group("Weapon"):
+				right_slot.add_child(newItem)
+				rHand.texture = hand3
+			else:
+				item_slot.add_child(newItem)
+			held_item = newItem
+			closest_item.queue_free()
 
 func _physics_process(delta: float) -> void:
 	var input_axis:Vector2 = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")

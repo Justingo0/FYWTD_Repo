@@ -21,6 +21,8 @@ func _ready() -> void:
 	attackSprite.visible = false
 	
 	cooldown_timer.wait_time = cooldown_time
+	
+	add_to_group("Weapon")
 
 func setHands(player:CharacterBody2D, leftSet:CompressedTexture2D, rightSet:CompressedTexture2D):
 	var leftHand = player.get_node("LeftHand") as Sprite2D

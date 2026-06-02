@@ -39,8 +39,11 @@ func attack():
 func _physics_process(delta: float) -> void:
 	if not nearestPlayer or is_dead: return
 	
-	var target_speed = speed*100
-	velocity = global_position.direction_to(nearestPlayer.global_position) * target_speed * delta
+	if (nearestPlayer.global_position - global_position).length() > 120:
+		var target_speed = speed*100
+		velocity = global_position.direction_to(nearestPlayer.global_position) * target_speed * delta
+	else:
+		velocity = Vector2.ZERO
 	move_and_slide()
 	
 	if attacking and cooldown_timer.time_left == 0:
@@ -65,10 +68,9 @@ func take_damage(damageDealt):
 		spriteAnim.play("hurt")
 		animPlayer.play("death")
 		is_dead = true
-		
 		await animPlayer.animation_finished
-		
 		queue_free()
+		
 		return
 	animPlayer.play("hurt")
 	spriteAnim.play("hurt")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://4jm4s5d8mdks"]
+
+[ext_resource type="Texture2D" uid="uid://bxqg7w0wo4naj" path="res://Sprites/Objects/Items/Weapons/Scythe.png" id="1_kleud"]
+[ext_resource type="PackedScene" uid="uid://xr404syxp4or" path="res://Scenes/Objects/Nodes/Items/sycthe.tscn" id="2_21lou"]
+[ext_resource type="Script" path="res://Scenes/Objects/Nodes/item.gd" id="2_wqn0q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5da3b"]
+radius = 27.75
+
+[node name="Sprite2D" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(4, 4)
+script = ExtResource("2_wqn0q")
+item = ExtResource("2_21lou")
+sprite = ExtResource("1_kleud")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5da3b")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
