@@ -5,9 +5,10 @@ extends Sprite2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		body.closest_item = self
+		body.closest_item = $"."
+		print(body)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		if body.closest_item == self:
+		if body.closest_item == $".":
 			body.closest_item = null
