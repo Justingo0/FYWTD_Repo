@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://xr404syxp4or"]
+[gd_scene format=3 uid="uid://xr404syxp4or"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/sycthe.gd" id="1_wm3a8"]
+[ext_resource type="Script" uid="uid://bd51b83c3hnkw" path="res://Scripts/Weapons/sycthe.gd" id="1_wm3a8"]
 [ext_resource type="Texture2D" uid="uid://vtcxr6hlvux7" path="res://Sprites/Objects/Items/Weapons/ScytheFlash.png" id="2_5jiu6"]
 [ext_resource type="Texture2D" uid="uid://bxqg7w0wo4naj" path="res://Sprites/Objects/Items/Weapons/Scythe.png" id="2_por36"]
 
@@ -103,45 +103,43 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nora8"]
 _data = {
-"RESET": SubResource("Animation_61rji"),
-"attack": SubResource("Animation_308ij")
+&"RESET": SubResource("Animation_61rji"),
+&"attack": SubResource("Animation_308ij")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2v47"]
 radius = 216.002
 
-[node name="Sycthe" type="Area2D"]
+[node name="Sycthe" type="Area2D" unique_id=1832043597]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_wm3a8")
 damage = 12
 cooldown_time = 0.9
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nora8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=378859319]
+libraries/ = SubResource("AnimationLibrary_nora8")
 
-[node name="Main" type="Sprite2D" parent="."]
+[node name="Main" type="Sprite2D" parent="." unique_id=1414702477]
 texture_filter = 1
 position = Vector2(56, -24)
 scale = Vector2(8, 8)
 texture = ExtResource("2_por36")
 
-[node name="Pivot" type="Node2D" parent="."]
+[node name="Pivot" type="Node2D" parent="." unique_id=1051186364]
 visible = false
 z_index = 5
 position = Vector2(-58, -20)
 scale = Vector2(8, 8)
 
-[node name="Anim" type="Sprite2D" parent="Pivot"]
+[node name="Anim" type="Sprite2D" parent="Pivot" unique_id=1991077474]
 texture_filter = 1
 position = Vector2(8.75, -5)
 texture = ExtResource("2_5jiu6")
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1858781542]
 one_shot = true
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1498820831]
 position = Vector2(-58, -20)
 shape = SubResource("CircleShape2D_c2v47")

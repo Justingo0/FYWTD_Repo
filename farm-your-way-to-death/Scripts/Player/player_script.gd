@@ -25,10 +25,7 @@ var tween_life:float = 0.5
 var last_dir:String = "Left"
 
 var held_item = null
-@export var closest_item = null
-
-func _ready() -> void:
-	add_to_group("Player")
+@export var interact_obj = null
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -37,14 +34,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("Test2"):
 			health += 1
 		if event.is_action_pressed("Interact"):
-			var newItem = closest_item.item.instantiate()
-			if not newItem.is_in_group("Weapon"):
-				right_slot.add_child(newItem)
-				rHand.texture = hand3
-			else:
-				item_slot.add_child(newItem)
-			held_item = newItem
-			closest_item.queue_free()
+			interact_obj.use()
 
 func _physics_process(delta: float) -> void:
 	var input_axis:Vector2 = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown")
@@ -91,3 +81,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damageDealt:int):
 	health -= damageDealt
+
+#func set_hands(mode:String):
+	#if mode == "weapon_hold":
+		#lHand = 

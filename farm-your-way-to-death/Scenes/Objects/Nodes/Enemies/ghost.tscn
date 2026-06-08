@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b25l3g8wwlakp"]
+[gd_scene format=3 uid="uid://b25l3g8wwlakp"]
 
 [ext_resource type="Texture2D" uid="uid://7d5hvuf7h6ge" path="res://Sprites/Enemies/Ghosts/Death.png" id="1_3dicv"]
-[ext_resource type="Script" path="res://Scripts/Enemies/ghost.gd" id="1_btdaj"]
+[ext_resource type="Script" uid="uid://blpkwvv0sdvrb" path="res://Scripts/Enemies/ghost.gd" id="1_btdaj"]
 [ext_resource type="Texture2D" uid="uid://cogj5u2qaud0i" path="res://Sprites/Enemies/Ghosts/Move1.png" id="1_ngdg8"]
 [ext_resource type="Texture2D" uid="uid://d2g4hw2nybeqt" path="res://Sprites/Enemies/Ghosts/Attack1.png" id="2_dxfmu"]
 [ext_resource type="Texture2D" uid="uid://xjjiatu1ithi" path="res://Sprites/Enemies/Ghosts/Move2.png" id="2_lryeb"]
@@ -158,10 +158,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vw1bv"]
 _data = {
-"RESET": SubResource("Animation_2dfvg"),
-"attack": SubResource("Animation_pqc53"),
-"death": SubResource("Animation_6puvq"),
-"hurt": SubResource("Animation_1u64n")
+&"RESET": SubResource("Animation_2dfvg"),
+&"attack": SubResource("Animation_pqc53"),
+&"death": SubResource("Animation_6puvq"),
+&"hurt": SubResource("Animation_1u64n")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jxgj2"]
@@ -170,7 +170,7 @@ radius = 85.0059
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ep53m"]
 size = Vector2(100, 100)
 
-[node name="Ghost" type="CharacterBody2D"]
+[node name="Ghost" type="CharacterBody2D" unique_id=1399047862 groups=["Enemy"]]
 z_index = 2
 collision_layer = 2
 collision_mask = 2
@@ -178,7 +178,7 @@ script = ExtResource("1_btdaj")
 speed = 40.0
 health = 24
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=857459222]
 z_index = 1
 texture_filter = 1
 scale = Vector2(5.5, 5.5)
@@ -186,20 +186,18 @@ sprite_frames = SubResource("SpriteFrames_uasnd")
 animation = &"move"
 autoplay = "move"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_vw1bv")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=468610854]
+libraries/ = SubResource("AnimationLibrary_vw1bv")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1713624659]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2107217731]
 shape = SubResource("CircleShape2D_jxgj2")
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="." unique_id=2026670277]
 one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=324878221]
 shape = SubResource("RectangleShape2D_ep53m")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

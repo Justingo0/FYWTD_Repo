@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://4jm4s5d8mdks"]
+[gd_scene format=3 uid="uid://4jm4s5d8mdks"]
 
-[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="2_wqn0q"]
+[ext_resource type="Script" uid="uid://c524fvabu24s0" path="res://Scripts/Items/item.gd" id="2_wqn0q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5da3b"]
 radius = 27.75
 
-[node name="Item" type="Sprite2D"]
+[node name="Item" type="Sprite2D" unique_id=1847071027]
 texture_filter = 1
 scale = Vector2(4, 4)
 script = ExtResource("2_wqn0q")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=426337143]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1506275313]
 shape = SubResource("CircleShape2D_5da3b")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

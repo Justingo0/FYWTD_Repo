@@ -1,32 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://qnrkqc5ncf17"]
+[gd_scene format=3 uid="uid://qnrkqc5ncf17"]
 
 [ext_resource type="PackedScene" uid="uid://c3lromuble58s" path="res://Scenes/Objects/Nodes/player_character.tscn" id="1_2cok2"]
 [ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://Scenes/user_interface.tscn" id="2_h2yf4"]
-[ext_resource type="PackedScene" uid="uid://b25l3g8wwlakp" path="res://Scenes/Objects/Nodes/Enemies/ghost.tscn" id="3_kkedg"]
 [ext_resource type="PackedScene" uid="uid://4jm4s5d8mdks" path="res://Scenes/Objects/Nodes/Items/item.tscn" id="4_ochq7"]
-[ext_resource type="Texture2D" uid="uid://bxqg7w0wo4naj" path="res://Sprites/Objects/Items/Weapons/Scythe.png" id="5_6g0fs"]
-[ext_resource type="PackedScene" uid="uid://xr404syxp4or" path="res://Scenes/Objects/Nodes/Items/sycthe.tscn" id="6_8wet8"]
+[ext_resource type="Texture2D" uid="uid://d2hk8k1h8jvkd" path="res://Sprites/Objects/Items/SeedPacket.png" id="7_0fcji"]
+[ext_resource type="PackedScene" uid="uid://4pevxs5iigur" path="res://Scenes/Objects/Nodes/Items/seed_packet.tscn" id="8_dqfvb"]
 
-[node name="TestWorld" type="Node2D"]
+[node name="TestWorld" type="Node2D" unique_id=1989148833]
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("1_2cok2")]
+[node name="PlayerCharacter" parent="." unique_id=243492102 instance=ExtResource("1_2cok2")]
 unique_name_in_owner = true
 z_index = 2
 
-[node name="MainCamera" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="." unique_id=493356728]
 
-[node name="Canvas" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="." unique_id=92606568]
 
-[node name="MainUI" parent="Canvas" instance=ExtResource("2_h2yf4")]
+[node name="MainUI" parent="Canvas" unique_id=31336119 instance=ExtResource("2_h2yf4")]
 
-[node name="Ghost" parent="." instance=ExtResource("3_kkedg")]
-position = Vector2(479, -226)
-
-[node name="Ghost2" parent="." instance=ExtResource("3_kkedg")]
-position = Vector2(-310, 63)
-
-[node name="Item" parent="." instance=ExtResource("4_ochq7")]
-position = Vector2(459, 179)
-texture = ExtResource("5_6g0fs")
-item = ExtResource("6_8wet8")
-is_weapon = true
+[node name="Item2" parent="." unique_id=1847071027 instance=ExtResource("4_ochq7")]
+position = Vector2(246, 208)
+texture = ExtResource("7_0fcji")
+item = ExtResource("8_dqfvb")

@@ -17,8 +17,6 @@ var is_dead := false
 func _ready() -> void:
 	cooldown_timer.wait_time = attack_cooldown
 	nearestPlayer = %PlayerCharacter
-	
-	add_to_group("Enemy")
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if spriteAnim.animation == "attack" and spriteAnim.frame == 3:
