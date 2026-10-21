@@ -1,24 +1,30 @@
 [gd_scene format=3 uid="uid://qnrkqc5ncf17"]
 
-[ext_resource type="PackedScene" uid="uid://c3lromuble58s" path="res://Scenes/Objects/Nodes/player_character.tscn" id="1_2cok2"]
-[ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://Scenes/user_interface.tscn" id="2_h2yf4"]
-[ext_resource type="PackedScene" uid="uid://4jm4s5d8mdks" path="res://Scenes/Objects/Nodes/Items/item.tscn" id="4_ochq7"]
-[ext_resource type="Texture2D" uid="uid://d2hk8k1h8jvkd" path="res://Sprites/Objects/Items/SeedPacket.png" id="7_0fcji"]
-[ext_resource type="PackedScene" uid="uid://4pevxs5iigur" path="res://Scenes/Objects/Nodes/Items/seed_packet.tscn" id="8_dqfvb"]
+[ext_resource type="Script" uid="uid://btvc2suook8jj" path="res://Scripts/Objects/test_world.gd" id="1_0fcji"]
+[ext_resource type="PackedScene" uid="uid://c3lromuble58s" path="res://Scenes/Objects/player_character.tscn" id="1_2cok2"]
+[ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://Scenes/UI/user_interface.tscn" id="2_h2yf4"]
+[ext_resource type="Script" uid="uid://csuyeq5ickr1e" path="res://Scripts/Objects/Custom/game_camera.gd" id="3_p7j4p"]
 
 [node name="TestWorld" type="Node2D" unique_id=1989148833]
+script = ExtResource("1_0fcji")
 
-[node name="PlayerCharacter" parent="." unique_id=243492102 instance=ExtResource("1_2cok2")]
-unique_name_in_owner = true
-z_index = 2
-
-[node name="MainCamera" type="Camera2D" parent="." unique_id=493356728]
+[node name="SpawnTime" type="Timer" parent="." unique_id=1868145325]
+wait_time = 0.5
+autostart = true
 
 [node name="Canvas" type="CanvasLayer" parent="." unique_id=92606568]
 
 [node name="MainUI" parent="Canvas" unique_id=31336119 instance=ExtResource("2_h2yf4")]
 
-[node name="Item2" parent="." unique_id=1847071027 instance=ExtResource("4_ochq7")]
-position = Vector2(246, 208)
-texture = ExtResource("7_0fcji")
-item = ExtResource("8_dqfvb")
+[node name="PlayerCharacter" parent="." unique_id=243492102 instance=ExtResource("1_2cok2")]
+unique_name_in_owner = true
+z_index = 2
+speed = 60
+
+[node name="GameCamera" type="Camera2D" parent="." unique_id=2069663582]
+unique_name_in_owner = true
+zoom = Vector2(0.4, 0.4)
+script = ExtResource("3_p7j4p")
+metadata/_custom_type_script = "uid://csuyeq5ickr1e"
+
+[connection signal="timeout" from="SpawnTime" to="." method="_on_spawn_time_timeout"]

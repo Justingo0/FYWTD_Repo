@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://4pevxs5iigur"]
-
-[ext_resource type="Texture2D" uid="uid://d2hk8k1h8jvkd" path="res://Sprites/Objects/Items/SeedPacket.png" id="1_s07t4"]
-
-[node name="SeedPacket" type="Sprite2D" unique_id=991871718]
-texture_filter = 1
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("1_s07t4")

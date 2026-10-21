@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemStats" format=3 uid="uid://dvpxw3q4if8jq"]
+
+[ext_resource type="Script" uid="uid://bg0fmhshxw7xu" path="res://Resources/Managers/item_stats.gd" id="1_bnhf7"]
+[ext_resource type="Texture2D" uid="uid://b4k5j4xpuxqq0" path="res://Assets/Objects/missing_texture.png" id="1_qjfny"]
+
+[resource]
+script = ExtResource("1_bnhf7")
+name = "Money"
+icon = ExtResource("1_qjfny")
+icon_offset = null
+item_scene_path = "uid://b4bl3oj2m1sq4"
+metadata/_custom_type_script = "uid://bg0fmhshxw7xu"

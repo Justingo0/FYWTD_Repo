@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://71wgoktk7l1b"]
+
+[ext_resource type="Script" uid="uid://8dm17gvsa32e" path="res://Scripts/gui_scripts.gd" id="1_xen4y"]
+[ext_resource type="FontFile" uid="uid://dn8m7n6ckfnhi" path="res://Assets/Square.ttf" id="2_j6mn1"]
+[ext_resource type="Texture2D" uid="uid://xpnqwx2d05b0" path="res://Assets/Objects/Pause.png" id="3_ebjbk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
+font = ExtResource("2_j6mn1")
+font_size = 41
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainUI" type="Control" unique_id=1902220309]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xen4y")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=107613987]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 281.0
+offset_bottom = 81.0
+
+[node name="Hotbar" type="HBoxContainer" parent="." unique_id=569784919]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -100.0
+offset_right = 275.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Score" type="Label" parent="." unique_id=712128722]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_top = 23.0
+offset_right = 190.0
+offset_bottom = 99.0
+grow_horizontal = 2
+pivot_offset = Vector2(190, 37)
+text = "0"
+label_settings = SubResource("LabelSettings_p7o00")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreIncrement" type="Timer" parent="Score" unique_id=243595038]
+wait_time = 0.6
+autostart = true
+
+[node name="ComboBreakTime" type="Timer" parent="Score" unique_id=100852403]
+wait_time = 2.0
+one_shot = true
+
+[node name="PauseScreen" type="Panel" parent="." unique_id=1371313473]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseScreen" unique_id=1176745981]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -74.0
+offset_right = 74.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ebjbk")
+
+[connection signal="timeout" from="Score/ScoreIncrement" to="." method="_on_score_increment_timeout"]
+[connection signal="timeout" from="Score/ComboBreakTime" to="." method="_on_combo_break_time_timeout"]
