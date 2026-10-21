@@ -46,8 +46,8 @@ func on_enemy_killed():
 	combo_break_timer.start()
 	print(combo)
 	
-	var rotation = [-0.2*combo,0.2*combo]
-	score_counter.rotation = deg_to_rad(rotation.pick_random())
+	var counter_rotation = [-0.1*min(combo,25),0.1*min(combo,25)]
+	score_counter.rotation = deg_to_rad(counter_rotation.pick_random())
 	score_counter.scale = Vector2(1.5+(0.03*min(combo,25)),1.5+(0.03*min(combo,25)))
 	
 	var tween = create_tween()
