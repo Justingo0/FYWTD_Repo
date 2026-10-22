@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemStats" format=3 uid="uid://dvpxw3q4if8jq"]
 
-[ext_resource type="Script" uid="uid://bg0fmhshxw7xu" path="res://Resources/Managers/item_stats.gd" id="1_bnhf7"]
+[ext_resource type="Script" uid="uid://bg0fmhshxw7xu" path="res://Resources/Managers/Items/item_stats.gd" id="1_bnhf7"]
 [ext_resource type="Texture2D" uid="uid://b4k5j4xpuxqq0" path="res://Assets/Objects/missing_texture.png" id="1_qjfny"]
 
 [resource]

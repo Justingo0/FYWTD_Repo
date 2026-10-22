@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://c2kha6xwd2qr6"]
 
 [ext_resource type="Texture2D" uid="uid://bxqg7w0wo4naj" path="res://Assets/Objects/Items/Weapons/Scythe.png" id="1_nd5xs"]
-[ext_resource type="Script" uid="uid://cc4odb5cp6wci" path="res://Resources/Managers/weapon_stats.gd" id="2_vajhp"]
+[ext_resource type="Script" uid="uid://cc4odb5cp6wci" path="res://Resources/Managers/Items/Weapons/weapon_stats.gd" id="2_vajhp"]
 
 [resource]
 script = ExtResource("2_vajhp")

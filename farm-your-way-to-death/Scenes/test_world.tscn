@@ -3,10 +3,30 @@
 [ext_resource type="Script" uid="uid://btvc2suook8jj" path="res://Scripts/Objects/test_world.gd" id="1_0fcji"]
 [ext_resource type="PackedScene" uid="uid://c3lromuble58s" path="res://Scenes/Objects/player_character.tscn" id="1_2cok2"]
 [ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://Scenes/UI/user_interface.tscn" id="2_h2yf4"]
+[ext_resource type="Script" uid="uid://cwimvq6c4gw6i" path="res://Scripts/Objects/tutorial.gd" id="3_kt01x"]
 [ext_resource type="Script" uid="uid://csuyeq5ickr1e" path="res://Scripts/Objects/Custom/game_camera.gd" id="3_p7j4p"]
+[ext_resource type="FontFile" uid="uid://dn8m7n6ckfnhi" path="res://Assets/Square.ttf" id="5_iwv7r"]
 
 [node name="TestWorld" type="Node2D" unique_id=1989148833]
 script = ExtResource("1_0fcji")
+
+[node name="Tutorial" type="RichTextLabel" parent="." unique_id=1715637112]
+offset_left = -553.0
+offset_top = -100.0
+offset_right = 553.0
+offset_bottom = 100.0
+theme_override_fonts/normal_font = ExtResource("5_iwv7r")
+theme_override_fonts/bold_font = ExtResource("5_iwv7r")
+theme_override_font_sizes/normal_font_size = 70
+theme_override_font_sizes/bold_font_size = 95
+bbcode_enabled = true
+text = "PRESS [b][SPACE][/b] TO ATTACK
+PRESS [b][SHIFT][/b] TO USE SPECIAL"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kt01x")
 
 [node name="SpawnTime" type="Timer" parent="." unique_id=1868145325]
 wait_time = 0.5

@@ -20,6 +20,10 @@ run/main_scene="res://Scenes/test_world.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://cgxgf5tpgc2xt"
+
 [display]
 
 window/stretch/mode="viewport"
@@ -92,6 +96,11 @@ Test2={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

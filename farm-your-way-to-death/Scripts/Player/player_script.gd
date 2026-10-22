@@ -20,6 +20,8 @@ signal on_enemy_killed()
 @onready var hand2 = preload("res://Assets/Player/Hand2.png")
 @onready var hand3 = preload("res://Assets/Player/Hand3.png")
 
+@onready var camera = %GameCamera
+
 @export var speed:int = 70
 @export var acceleration:int = 60
 @export var last_velocity:Vector2 = Vector2.ZERO
@@ -56,19 +58,14 @@ enum states {idle,stunned,dead}
 var last_dir = 0
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if Engine.time_scale == 0: return
-		if event.is_action_pressed("Special"):
-			if held_item and held_item.has_method("special"):
-				held_item.special(self)
-		
-		if event.is_action("Test"):
-			health -= 1
-		if event.is_action("Test2"):
-			health += 1
-		if event.is_action_pressed("Interact"):
-			if interact_obj and interact_obj.has_method("use"):
-				interact_obj.use(self)
+	if Engine.time_scale == 0: return
+	if event.is_action("Test"):
+		health -= 1
+	if event.is_action("Test2"):
+		health += 1
+	if event.is_action_pressed("Interact"):
+		if interact_obj and interact_obj.has_method("use"):
+			interact_obj.use(self)
 
 func _ready() -> void:
 	add_new_item(load("res://Resources/Data/Weapons/scythe_stats.tres"), {}, true)
@@ -80,6 +77,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("Use"):
 		if held_item and held_item.has_method("use"):
 			held_item.use(self)
+	if Input.is_action_pressed("Special"):
+		if held_item and held_item.has_method("special"):
+			held_item.special(self)
 	
 	#if velocity.x > 0:
 		#anim.play("run")
@@ -182,6 +182,7 @@ func set_hands(hand_id:int, type:int):
 func take_damage(damageDealt:int) -> void:
 	if health <= 0: return
 	health -= damageDealt
+	camera.camera_shake(5,0.2)
 
 func add_new_item(item_class:ItemStats, item_parameters:Dictionary, equip_now:bool=false) -> bool:
 	if inventory.size() >= inventory_limit: return false
