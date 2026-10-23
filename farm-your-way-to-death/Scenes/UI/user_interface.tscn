@@ -4,6 +4,9 @@
 [ext_resource type="FontFile" uid="uid://dn8m7n6ckfnhi" path="res://Assets/Square.ttf" id="2_j6mn1"]
 [ext_resource type="Script" uid="uid://elnl6or0scdk" path="res://Scripts/Objects/high_score.gd" id="3_6q3el"]
 [ext_resource type="Texture2D" uid="uid://xpnqwx2d05b0" path="res://Assets/Objects/Pause.png" id="3_ebjbk"]
+[ext_resource type="Texture2D" uid="uid://vtcxr6hlvux7" path="res://Assets/Objects/Items/Weapons/ScytheFlash.png" id="5_763oc"]
+[ext_resource type="Texture2D" uid="uid://b4d2jo60tl0gw" path="res://Assets/Player/Movement/Move1.png" id="6_3yokl"]
+[ext_resource type="Texture2D" uid="uid://n76nfepqwwn4" path="res://Assets/Objects/PlayerIcon.png" id="7_sdk4s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
 font = ExtResource("2_j6mn1")
@@ -87,10 +90,10 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 0.6)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6q3el"]
 bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.8784314)
@@ -99,10 +102,10 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 0.6)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
 
 [node name="MainUI" type="Control" unique_id=1902220309]
 layout_mode = 3
@@ -258,6 +261,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="MobileControls" unique_id=140747471]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -270,7 +274,7 @@ grow_vertical = 0
 joystick_mode = 1
 joystick_size = 180.0
 tip_size = 90.0
-deadzone_ratio = 0.5
+deadzone_ratio = 0.4
 action_left = &"MoveLeft"
 action_right = &"MoveRight"
 action_up = &"MoveUp"
@@ -296,7 +300,92 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_p7o00")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_p7o00")
 theme_override_styles/focus = SubResource("StyleBoxFlat_p7o00")
 
+[node name="TextureRect" type="TextureRect" parent="MobileControls/AttackButton" unique_id=583064318]
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.137695
+offset_top = 22.137695
+offset_right = -22.137695
+offset_bottom = -22.137695
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7546488
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_763oc")
+
+[node name="ColorRect" type="ColorRect" parent="MobileControls/AttackButton/TextureRect" unique_id=1221071357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MobileControls/AttackButton" unique_id=191926380]
+self_modulate = Color(1, 1, 1, 0.3647059)
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.137695
+offset_top = 22.137695
+offset_right = -22.137695
+offset_bottom = -22.137695
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.20565476
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_763oc")
+
+[node name="ColorRect" type="ColorRect" parent="MobileControls/AttackButton/TextureRect2" unique_id=299120250]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MobileControls/AttackButton" unique_id=566495930]
+self_modulate = Color(1, 1, 1, 0.10980392)
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.137695
+offset_top = 22.137695
+offset_right = -22.137695
+offset_bottom = -22.137695
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.513218
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("5_763oc")
+
+[node name="ColorRect" type="ColorRect" parent="MobileControls/AttackButton/TextureRect3" unique_id=1711691441]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="SpecialButton" type="Button" parent="MobileControls" unique_id=1442483075]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -315,6 +404,121 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_p7o00")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_p7o00")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_p7o00")
 theme_override_styles/focus = SubResource("StyleBoxFlat_p7o00")
+
+[node name="TextureRect3" type="TextureRect" parent="MobileControls/SpecialButton" unique_id=2128876902]
+self_modulate = Color(1, 1, 1, 0.21960784)
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.61454
+offset_top = 58.4872
+offset_right = -78.38546
+offset_bottom = -23.512802
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.17453292
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_3yokl")
+stretch_mode = 5
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="MobileControls/SpecialButton/TextureRect3" unique_id=1452826354]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MobileControls/SpecialButton" unique_id=1355219627]
+self_modulate = Color(1, 1, 1, 0.5058824)
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.614563
+offset_top = 53.487183
+offset_right = -70.38544
+offset_bottom = -28.512817
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.17453292
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_3yokl")
+stretch_mode = 5
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="MobileControls/SpecialButton/TextureRect2" unique_id=1272655308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MobileControls/SpecialButton" unique_id=2001025285]
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.614563
+offset_top = 37.487183
+offset_right = -44.385437
+offset_bottom = -24.512817
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.17453292
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("7_sdk4s")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="MobileControls/SpecialButton/TextureRect" unique_id=932000215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect5" type="TextureRect" parent="MobileControls/SpecialButton" unique_id=1092743770]
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 25.684729
+offset_right = -15.870361
+offset_bottom = -30.18563
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.17453292
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_763oc")
+
+[node name="ColorRect" type="ColorRect" parent="MobileControls/SpecialButton/TextureRect5" unique_id=2006732287]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="timeout" from="Score/ScoreIncrement" to="." method="_on_score_increment_timeout"]
 [connection signal="timeout" from="Score/ComboBreakTime" to="." method="_on_combo_break_time_timeout"]

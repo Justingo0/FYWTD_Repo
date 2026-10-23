@@ -24,7 +24,7 @@ signal on_enemy_killed()
 
 @export var speed:int = 70
 @export var acceleration:int = 60
-@export var last_velocity:Vector2 = Vector2.ZERO
+@export var last_velocity:Vector2 = Vector2.LEFT
 
 @export var max_health:int = 100
 @export var health:int = 100:
@@ -124,7 +124,7 @@ func movement(delta) -> void:
 	var target_velocity:Vector2 = input_axis * target_speed
 	velocity = Vector2(move_toward(velocity.x, target_velocity.x, target_accel * delta), move_toward(velocity.y, target_velocity.y, target_accel * delta))
 	
-	if input_axis != Vector2.ZERO:
+	if abs(input_axis) > Vector2(0.6,0.6):
 		last_velocity = input_axis
 	
 	if velocity.x > 0:
