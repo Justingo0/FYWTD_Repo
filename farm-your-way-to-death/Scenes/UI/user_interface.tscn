@@ -261,7 +261,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="MobileControls" unique_id=140747471]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
