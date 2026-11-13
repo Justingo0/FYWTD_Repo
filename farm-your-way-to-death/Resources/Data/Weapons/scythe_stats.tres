@@ -6,8 +6,10 @@
 [resource]
 script = ExtResource("2_vajhp")
 damage = 2
-cooldown = 0.6
+cooldown = 0.7
+knockback = 550.0
 special_cooldown = 1.2
+name = "Scythe"
 icon = ExtResource("1_nd5xs")
 icon_offset = Vector2(56, -24)
 item_scene_path = "uid://xr404syxp4or"

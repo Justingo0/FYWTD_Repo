@@ -6,6 +6,7 @@ class_name WeaponStats
 @export var damage:int
 #Counts down during the weapon's attack animation
 @export var cooldown:float
+@export var knockback:float = 200
 @export var special_cooldown:float
 
 @export_group("Range")

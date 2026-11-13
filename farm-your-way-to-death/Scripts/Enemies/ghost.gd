@@ -78,10 +78,10 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 	if attacking == body:
 		attacking = null
 
-func take_damage(damage_dealt:int, attacker:Node2D):
+func take_damage(damage_dealt:int, attacker:Node2D, kbF):
 	if damage_dealt <= 0.0 or state == states.dead or state == states.stunned: return
 	health -= damage_dealt
-	apply_knockback(800, attacker)
+	apply_knockback(kbF, attacker)
 	if health <= 0:
 		if attacker.has_signal("on_enemy_killed"):
 			attacker.on_enemy_killed.emit()

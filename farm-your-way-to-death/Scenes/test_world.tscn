@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://71wgoktk7l1b" path="res://Scenes/UI/user_interface.tscn" id="2_h2yf4"]
 [ext_resource type="Script" uid="uid://cwimvq6c4gw6i" path="res://Scripts/Objects/tutorial.gd" id="3_kt01x"]
 [ext_resource type="Script" uid="uid://csuyeq5ickr1e" path="res://Scripts/Objects/Custom/game_camera.gd" id="3_p7j4p"]
+[ext_resource type="PackedScene" uid="uid://bsikg63gwteex" path="res://Scenes/Objects/castle.tscn" id="4_p7j4p"]
 [ext_resource type="FontFile" uid="uid://dn8m7n6ckfnhi" path="res://Assets/Square.ttf" id="5_iwv7r"]
 
 [node name="TestWorld" type="Node2D" unique_id=1989148833]
@@ -32,6 +33,8 @@ script = ExtResource("3_kt01x")
 wait_time = 0.5
 autostart = true
 
+[node name="Castle" parent="SpawnTime" unique_id=228580079 instance=ExtResource("4_p7j4p")]
+
 [node name="Canvas" type="CanvasLayer" parent="." unique_id=92606568]
 
 [node name="MainUI" parent="Canvas" unique_id=31336119 instance=ExtResource("2_h2yf4")]
@@ -39,6 +42,7 @@ autostart = true
 [node name="PlayerCharacter" parent="." unique_id=243492102 instance=ExtResource("1_2cok2")]
 unique_name_in_owner = true
 z_index = 2
+position = Vector2(0, 400)
 speed = 60
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=2069663582]

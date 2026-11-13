@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bsikg63gwteex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymueo"]
+size = Vector2(352, 444)
+
+[node name="Castle" type="StaticBody2D" unique_id=228580079]
+z_as_relative = false
+y_sort_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=795917229]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -221.87778
+offset_right = 176.0
+offset_bottom = 221.87778
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1992326955]
+shape = SubResource("RectangleShape2D_ymueo")
+one_way_collision = true
+one_way_collision_margin = 22.3
+one_way_collision_direction = Vector2(0, -1)

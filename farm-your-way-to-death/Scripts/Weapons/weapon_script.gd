@@ -25,7 +25,7 @@ func use(player:CharacterBody2D) -> void:
 	var attacking_bodies = get_overlapping_bodies()
 	for body in attacking_bodies:
 		if body.is_in_group("Enemy"):
-			body.take_damage(current_stats.damage, player)
+			body.take_damage(current_stats.damage, player, current_stats.knockback)
 	if attacking_bodies.size() > 0:
 		if camera:
 			camera.camera_shake(2,0.3)
@@ -44,7 +44,7 @@ func special(player:CharacterBody2D):
 	var attacking_bodies = get_overlapping_bodies()
 	for body in attacking_bodies:
 		if body.is_in_group("Enemy"):
-			body.take_damage(current_stats.damage, player)
+			body.take_damage(current_stats.damage, player, current_stats.knockback)
 	if attacking_bodies.size() > 0:
 		if camera:
 			camera.camera_shake(2,0.3)
@@ -58,6 +58,6 @@ func special(player:CharacterBody2D):
 
 func _on_body_entered(body: Node2D) -> void:
 	if attacking and body.is_in_group("Enemy"):
-		body.take_damage(current_stats.damage, last_used_player)
+		body.take_damage(current_stats.damage, last_used_player, current_stats.knockback)
 		if camera:
 			camera.camera_shake(2,0.3)
