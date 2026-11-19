@@ -208,31 +208,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("3_6q3el")
 
-[node name="PauseScreen" type="Panel" parent="." unique_id=1371313473]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="PauseScreen" unique_id=1176745981]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -74.0
-offset_top = -74.0
-offset_right = 74.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_ebjbk")
-
 [node name="Annoucement" type="Label" parent="." unique_id=225490402]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -519,9 +494,67 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="PauseScreen" type="Panel" parent="." unique_id=1371313473]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseScreen" unique_id=1176745981]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -74.0
+offset_right = 74.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ebjbk")
+
+[node name="PauseButton" type="Button" parent="." unique_id=1327284178]
+visible = false
+clip_contents = true
+layout_mode = 1
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 110.0
+offset_bottom = 110.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_p7o00")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6q3el")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p7o00")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_p7o00")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_p7o00")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p7o00")
+
+[node name="TextureRect5" type="TextureRect" parent="PauseButton" unique_id=2058834451]
+clip_children = 2
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_ebjbk")
+
 [connection signal="timeout" from="Score/ScoreIncrement" to="." method="_on_score_increment_timeout"]
 [connection signal="timeout" from="Score/ComboBreakTime" to="." method="_on_combo_break_time_timeout"]
 [connection signal="button_down" from="MobileControls/AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_up" from="MobileControls/AttackButton" to="." method="_on_attack_button_button_up"]
 [connection signal="button_down" from="MobileControls/SpecialButton" to="." method="_on_special_button_button_down"]
 [connection signal="button_up" from="MobileControls/SpecialButton" to="." method="_on_special_button_button_up"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

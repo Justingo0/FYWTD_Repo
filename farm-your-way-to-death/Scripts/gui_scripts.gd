@@ -40,11 +40,17 @@ var score := 0:
 	get:
 		return score
 
+func get_if_mobile() -> bool:
+	if OS.has_feature("mobile") or OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		return true
+	return false
+
 func _ready() -> void:
-	if OS.has_feature("mobile"):
+	$MobileControls.visible = false
+	$PauseButton.visible = false
+	if get_if_mobile():
 		$MobileControls.visible = true
-	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
-		$MobileControls.visible = true
+		$PauseButton.visible = true
 	
 	combo_animator.play("rotate")
 	combo_counter.text = "x" + str(combo)
@@ -133,3 +139,8 @@ func _on_special_button_button_down() -> void:
 
 func _on_special_button_button_up() -> void:
 	Input.action_release("Special")
+
+func _on_pause_button_pressed() -> void:
+	if not get_if_mobile(): return
+	Engine.time_scale = 0 if Engine.time_scale == 1 else 1
+	pause_screen.visible = true if Engine.time_scale == 0 else false
